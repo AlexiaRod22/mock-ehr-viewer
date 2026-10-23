@@ -1,4 +1,6 @@
 import {useState} from 'react';
+import PatientCard from './components/PatientCard';
+import Dashboard from './components/Dashboard';
 function App(){
   //my use states (always being rendered)
   const [healthCardNumber,setHealthCardNumber] = useState('');
@@ -46,13 +48,11 @@ function App(){
       )}
 
       {patient && (
-        <div>
-          <h2>Patient Information</h2>
-          <p>Name: {patient.name}</p>
-          <p>HCN: {patient.hcn}</p>
-          <p>DOB: {patient.dob}</p>
-          <p>Gender: {patient.gender}</p>
-        </div>
+        <>
+          <PatientCard patient = {patient}/>
+          <Dashboard/>
+        </>
+        
       )}
       
       <p>Current HCN: {healthCardNumber}</p>
