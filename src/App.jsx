@@ -1,6 +1,30 @@
 import {useState} from 'react';
 function App(){
+  //my use states (always being rendered)
   const [healthCardNumber,setHealthCardNumber] = useState('');
+  const [patient, setPatient] = useState(null);
+  const [error, setError] = useState('');
+
+  //once hcn is inputted and the retrieve patient is clicked then run
+  function retrievePatient(){
+    if(healthCardNumber === '1234567890'){
+
+      const mockPatient = {
+          name: 'Jane Doe',
+          hcn: '1234567890',
+          dob: '1980-01-01',
+          gender: 'Female'
+        };
+      setPatient(mockPatient);
+      setError('');
+    }else{
+      setPatient(null);
+      setError('Patient not found');
+    }
+    
+  }
+  
+  //main
   return(
     <div>
       <h1>Ontario Health EHR Viewer</h1>
@@ -12,12 +36,25 @@ function App(){
       />
 
       <button
-        onClick = {() => {alert(`Searching for HCN: ${healthCardNumber}`);
-
-        }}
-        >
+        onClick = {retrievePatient}>
         Retrieve Patient
       </button>
+      
+      
+      {error && (
+        <p>{error}</p>
+      )}
+
+      {patient && (
+        <div>
+          <h2>Patient Information</h2>
+          <p>Name: {patient.name}</p>
+          <p>HCN: {patient.hcn}</p>
+          <p>DOB: {patient.dob}</p>
+          <p>Gender: {patient.gender}</p>
+        </div>
+      )}
+      
       <p>Current HCN: {healthCardNumber}</p>
     </div>
   );
