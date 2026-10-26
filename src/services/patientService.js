@@ -1,11 +1,11 @@
 import patientData from '../mockData/patientData';
 
 function getPatientByHcn(hcn){
-    if(hcn==patientData.hcn){
-        return patientData;
-    }
+    const foundPatient = patientData.find(
+        (patient) => patient.hcn === hcn
+    );
 
-    return null;
+    return foundPatient || null;
 }
 
 export {getPatientByHcn};
