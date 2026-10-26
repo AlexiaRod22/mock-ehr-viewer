@@ -1,6 +1,6 @@
-import olisData from '../mockData/olisData';
+import {getOlisResults} from '../services/olisService';
 function OlisTile(){
-    const labResults = olisData;
+    const labResults = getOlisResults();
     return(
         <div className="tile">
             <h3>OLIS</h3>
