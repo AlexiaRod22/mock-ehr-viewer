@@ -50,7 +50,7 @@ function App(){
       {patient && (
         <>
           <PatientCard patient = {patient}/>
-          <Dashboard/>
+          <Dashboard patient = {patient}/>
         </>
         
       )}

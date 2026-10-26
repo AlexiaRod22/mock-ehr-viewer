@@ -1,21 +1,26 @@
-function Dashboard(){
+import OlisTile from './OlisTile';
+import DicsTile from './DicsTile';
+
+function Dashboard({patient}){
     return(
         <div>
             <h2>Dashboard</h2>
 
             <div>
                 <h3>PCR</h3>
-                <p>Demographics</p>
+
+                <p>Name:  {patient.name}</p>
+                <p>HCN: {patient.hcn}</p>
+                <p>DOB: {patient.dob}</p>
+                <p>Gender: {patient.gender}</p>
             </div>
 
             <div>
-                <h3>OLIS</h3>
-                <p>Lab Results</p>
+                <OlisTile/>
             </div>
 
             <div>
-                <h3>DICS</h3>
-                <p>Imaging Studies</p>
+                <DicsTile/>
             </div>
         </div>
     );
