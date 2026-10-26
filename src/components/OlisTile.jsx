@@ -1,18 +1,6 @@
+import olisData from '../mockData/olisData';
 function OlisTile(){
-    const labResults = [
-        {
-            test: 'Hemoglobin',
-            value: '13.7'
-        },
-        {
-            test: 'Glucose',
-            value: '5.4'
-        },
-        {
-            test: 'AIC',
-            value: '5.8'
-        }
-    ];
+    const labResults = olisData;
     return(
         <div className="tile">
             <h3>OLIS</h3>

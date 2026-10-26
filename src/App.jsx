@@ -1,6 +1,9 @@
 import {useState} from 'react';
 import PatientCard from './components/PatientCard';
 import Dashboard from './components/Dashboard';
+
+import patientData from './mockData/patientData';
+
 import './App.css';
 function App(){
   //my use states (always being rendered)
@@ -12,13 +15,7 @@ function App(){
   function retrievePatient(){
     if(healthCardNumber === '1234567890'){
 
-      const mockPatient = {
-          name: 'Jane Doe',
-          hcn: '1234567890',
-          dob: '1980-01-01',
-          gender: 'Female'
-        };
-      setPatient(mockPatient);
+      setPatient(patientData);
       setError('');
     }else{
       setPatient(null);
