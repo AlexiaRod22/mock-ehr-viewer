@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import PatientCard from './components/PatientCard';
 import Dashboard from './components/Dashboard';
+import './App.css';
 function App(){
   //my use states (always being rendered)
   const [healthCardNumber,setHealthCardNumber] = useState('');
@@ -30,18 +31,19 @@ function App(){
   return(
     <div>
       <h1>Ontario Health EHR Viewer</h1>
-      <input
-      type = "text"
-      placeholder = "Enter Health Card Number"
-      value = {healthCardNumber}
-      onChange = {(event) => setHealthCardNumber(event.target.value)}
-      />
+      <div className = "search-section">
+        <input
+        type = "text"
+        placeholder = "Enter Health Card Number"
+        value = {healthCardNumber}
+        onChange = {(event) => setHealthCardNumber(event.target.value)}
+        />
 
-      <button
-        onClick = {retrievePatient}>
-        Retrieve Patient
-      </button>
-      
+        <button
+          onClick = {retrievePatient}>
+          Retrieve Patient
+        </button>
+      </div>
       
       {error && (
         <p>{error}</p>
@@ -54,8 +56,7 @@ function App(){
         </>
         
       )}
-      
-      <p>Current HCN: {healthCardNumber}</p>
+
     </div>
   );
 }

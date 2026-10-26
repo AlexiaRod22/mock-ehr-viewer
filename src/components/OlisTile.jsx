@@ -14,7 +14,7 @@ function OlisTile(){
         }
     ];
     return(
-        <div>
+        <div className="tile">
             <h3>OLIS</h3>
 
             {labResults.map((result,index) => (

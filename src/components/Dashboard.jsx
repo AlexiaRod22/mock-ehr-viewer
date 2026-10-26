@@ -3,10 +3,12 @@ import DicsTile from './DicsTile';
 
 function Dashboard({patient}){
     return(
-        <div>
-            <h2>Dashboard</h2>
+        <>
+        <h2 className = "dashboardTitle">Dashboard</h2>
 
-            <div>
+        <div className="dashboard">
+
+            <div className="tile">
                 <h3>PCR</h3>
 
                 <p>Name:  {patient.name}</p>
@@ -23,6 +25,7 @@ function Dashboard({patient}){
                 <DicsTile/>
             </div>
         </div>
+        </>
     );
 }
 

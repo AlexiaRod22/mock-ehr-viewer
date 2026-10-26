@@ -15,7 +15,7 @@ function DicsTile(){
     ];
 
     return(
-        <div>
+        <div className="tile">
             <h3>DICS</h3>
 
             {studies.map((study,index) => (
