@@ -2,7 +2,7 @@ import {useState} from 'react';
 import PatientCard from './components/PatientCard';
 import Dashboard from './components/Dashboard';
 
-import patientData from './mockData/patientData';
+import {getPatientByHcn} from './services/patientService';
 
 import './App.css';
 function App(){
@@ -13,9 +13,10 @@ function App(){
 
   //once hcn is inputted and the retrieve patient is clicked then run
   function retrievePatient(){
-    if(healthCardNumber === '1234567890'){
+    const foundPatient = getPatientByHcn(healthCardNumber);
 
-      setPatient(patientData);
+    if(foundPatient){
+      setPatient(foundPatient);
       setError('');
     }else{
       setPatient(null);
