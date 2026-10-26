@@ -1,6 +1,6 @@
-import dicsData from '../mockData/dicsData';
+import {getDicsStudies} from '../services/dicsService';
 function DicsTile(){
-    const studies = dicsData;
+    const studies = getDicsStudies();
 
     return(
         <div className="tile">
