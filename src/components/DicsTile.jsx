@@ -1,6 +1,6 @@
 import {getDicsStudies} from '../services/dicsService';
-function DicsTile(){
-    const studies = getDicsStudies();
+function DicsTile({patient}){
+    const studies = getDicsStudies(patient.hcn);
 
     return(
         <div className="tile">

@@ -1,7 +1,7 @@
 import olisData from '../mockData/olisData';
 
-function getOlisResults(){
-    return olisData;
+function getOlisResults(hcn){
+    return olisData[hcn] || [];
 }
 
 export {getOlisResults};

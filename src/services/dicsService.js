@@ -1,7 +1,7 @@
 import dicsData from '../mockData/dicsData';
 
-function getDicsStudies(){
-    return dicsData;
+function getDicsStudies(hcn){
+    return dicsData[hcn] || [];
 }
 
 export {getDicsStudies};

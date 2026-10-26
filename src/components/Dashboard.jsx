@@ -18,11 +18,11 @@ function Dashboard({patient}){
             </div>
 
             <div>
-                <OlisTile/>
+                <OlisTile patient = {patient}/>
             </div>
 
             <div>
-                <DicsTile/>
+                <DicsTile patient = {patient}/>
             </div>
         </div>
         </>

@@ -1,6 +1,6 @@
 import {getOlisResults} from '../services/olisService';
-function OlisTile(){
-    const labResults = getOlisResults();
+function OlisTile({patient}){
+    const labResults = getOlisResults(patient.hcn);
     return(
         <div className="tile">
             <h3>OLIS</h3>
