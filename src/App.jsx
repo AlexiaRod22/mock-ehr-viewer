@@ -14,6 +14,7 @@ function App(){
   const [loading, setLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
+  const [selectedRole, setSelectedRole] = useState('Clinician');
 
   //once hcn is inputted and the retrieve patient is clicked then run
   function retrievePatient(){
@@ -40,7 +41,7 @@ function App(){
   function login(){
     const mockUser = {
       username: 'doc1234',
-      role: 'intern'
+      role: selectedRole
     };
 
     setUser(mockUser);
@@ -52,6 +53,7 @@ function App(){
     setUser(null);
     setPatient(null);
     setError('');
+    setHealthCardNumber('');
   }
 
   if(!isAuthenticated){
@@ -60,6 +62,25 @@ function App(){
         <h1>Ontario Health EHR Viewer</h1>
 
         <p>Please sign in to continue</p>
+
+        <select
+        value = {selectedRole}
+        onChange = {(event) => setSelectedRole(event.target.value)
+        }>
+          <option
+          value = "Clinician">
+            Clinician
+          </option>
+
+          <option
+          value = "Student">
+            Student
+          </option>
+        </select>
+
+        <br />
+        <br />
+
 
         <button 
         onClick = {login}>
