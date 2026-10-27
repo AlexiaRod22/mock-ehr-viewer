@@ -3,6 +3,7 @@ import PatientCard from './components/PatientCard';
 import Dashboard from './components/Dashboard';
 import {getPatientByHcn} from './services/patientService';
 import Login from './components/Login';
+import {authenticate} from './services/authService';
 
 import './App.css';
 
@@ -40,12 +41,8 @@ function App(){
   }
   
   function login(){
-    const mockUser = {
-      username: 'doc1234',
-      role: selectedRole
-    };
-
-    setUser(mockUser);
+    const authenticatedUser = authenticate(selectedRole);
+    setUser(authenticatedUser);
     setIsAuthenticated(true);
   }
 
