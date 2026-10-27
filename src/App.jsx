@@ -13,6 +13,7 @@ function App(){
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
 
   //once hcn is inputted and the retrieve patient is clicked then run
   function retrievePatient(){
@@ -37,12 +38,18 @@ function App(){
   }
   
   function login(){
+    const mockUser = {
+      username: 'doc1234',
+      role: 'intern'
+    };
+
+    setUser(mockUser);
     setIsAuthenticated(true);
   }
 
   function logout(){
     setIsAuthenticated(false);
-
+    setUser(null);
     setPatient(null);
     setError('');
   }
@@ -66,6 +73,9 @@ function App(){
   return(
     <div>
       <h1>Ontario Health EHR Viewer</h1>
+
+      <p>Signed in as: {user?.username} ({user?.role})</p>
+      
       <button 
       onClick = {logout}>
         Sign out
@@ -97,7 +107,9 @@ function App(){
       {patient && (
         <>
           <PatientCard patient = {patient}/>
-          <Dashboard patient = {patient}/>
+          <Dashboard 
+          patient = {patient}
+          user = {user}/>
         </>
         
       )}
