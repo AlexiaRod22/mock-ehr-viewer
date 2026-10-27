@@ -2,6 +2,7 @@ import {useState} from 'react';
 import PatientCard from './components/PatientCard';
 import Dashboard from './components/Dashboard';
 import {getPatientByHcn} from './services/patientService';
+import Login from './components/Login';
 
 import './App.css';
 
@@ -58,35 +59,11 @@ function App(){
 
   if(!isAuthenticated){
     return(
-      <div>
-        <h1>Ontario Health EHR Viewer</h1>
-
-        <p>Please sign in to continue</p>
-
-        <select
-        value = {selectedRole}
-        onChange = {(event) => setSelectedRole(event.target.value)
-        }>
-          <option
-          value = "Clinician">
-            Clinician
-          </option>
-
-          <option
-          value = "Student">
-            Student
-          </option>
-        </select>
-
-        <br />
-        <br />
-
-
-        <button 
-        onClick = {login}>
-          Sign in
-        </button>
-      </div>
+      <Login
+      selectedRole = {selectedRole}
+      setSelectedRole = {setSelectedRole}
+      login = {login}
+      />
     );
   }
 
