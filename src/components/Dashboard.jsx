@@ -1,3 +1,4 @@
+import PcrTile from './PcrTile';
 import OlisTile from './OlisTile';
 import DicsTile from './DicsTile';
 
@@ -8,22 +9,11 @@ function Dashboard({patient}){
 
         <div className="dashboard">
 
-            <div className="tile">
-                <h3>PCR</h3>
+            <PcrTile patient = {patient} />
 
-                <p>Name:  {patient.name}</p>
-                <p>HCN: {patient.hcn}</p>
-                <p>DOB: {patient.dob}</p>
-                <p>Gender: {patient.gender}</p>
-            </div>
+            <OlisTile patient = {patient}/>
 
-            <div>
-                <OlisTile patient = {patient}/>
-            </div>
-
-            <div>
-                <DicsTile patient = {patient}/>
-            </div>
+            <DicsTile patient = {patient}/>
         </div>
         </>
     );
