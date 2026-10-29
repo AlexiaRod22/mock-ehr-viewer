@@ -1,7 +1,7 @@
-import dicsData from '../mockData/dicsData';
+import {getMappedImagingStudies} from './fhirService';
 
-function getDicsStudies(hcn){
-    return dicsData[hcn] || [];
+async function getDicsStudies(){
+    return await getMappedImagingStudies();
 }
 
 export {getDicsStudies};

@@ -51,4 +51,30 @@ async function getMappedObservation(){
     return data.entry.map((entry) => mapObservation(entry.resource));
 }
 
-export {getPatientByIdentifier, mapPatient, getObservations, mapObservation, getMappedObservation};
+async function getImagingStudies(){
+    const response = await fetch(`${FHIR_BASE_URL}/ImagingStudy?_count=5`);
+    
+    const data = await response.json();
+
+    return data
+}
+
+function mapImagingStudies(imagingStudyResource){
+    return{
+        studyId: imagingStudyResource.id,
+        
+        modality: imagingStudyResource.series?.[0]?.modality?.code,
+        
+        imageTitle: imagingStudyResource.series?.[0]?.instance?.[0]?.title,
+        
+        studyDate: imagingStudyResource.started
+    };
+}
+
+async function getMappedImagingStudies(){
+    const data = await getImagingStudies();
+
+    return data.entry.map((entry) => mapImagingStudies(entry.resource));
+}
+
+export {getMappedImagingStudies, mapImagingStudies,getImagingStudies,getPatientByIdentifier, mapPatient, getObservations, mapObservation, getMappedObservation};

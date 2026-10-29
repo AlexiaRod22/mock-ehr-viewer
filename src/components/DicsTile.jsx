@@ -1,6 +1,17 @@
+import {useState, useEffect} from 'react';
 import {getDicsStudies} from '../services/dicsService';
+
 function DicsTile({patient}){
-    const studies = getDicsStudies(patient.hcn);
+    const [studies,setStudies] = useState([]);
+
+    useEffect(() => {
+        async function loadStudies(){
+            const results = await getDicsStudies();
+
+            setStudies(results);
+        }
+        loadStudies();
+    }, []);
 
     return(
         <div className="tile">
@@ -8,7 +19,11 @@ function DicsTile({patient}){
 
             {studies.map((study,index) => (
                 <p key = {index}>
-                    {study.study} ({study.date})
+                    {study.modality}
+                    {' - '}
+                    {study.imageTitle}
+                    {' '} 
+                    ({study.studyDate})
                 </p>
             ))}
         </div>
