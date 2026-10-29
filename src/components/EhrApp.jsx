@@ -3,7 +3,7 @@ import {useOktaAuth} from '@okta/okta-react';
 import PatientCard from './PatientCard';
 import Dashboard from './Dashboard';
 
-import {getObservationsById,getPatientByIdentifier, mapPatient} from '../services/fhirService';
+import {getImagingStudiesById,getPatientByIdentifier, mapPatient} from '../services/fhirService';
 
 function EhrApp({oktaAuth}){
     const {authState} = useOktaAuth();
@@ -25,11 +25,8 @@ function EhrApp({oktaAuth}){
 
             if(data.entry && data.entry.length > 0 ){
                 const patient = mapPatient(data.entry[0].resource);
-
-                const observation = await getObservationsById(patient.fhirId)
-
-                console.log(observation);
-               
+                const images = await getImagingStudiesById(patient.fhirId);
+                console.log(images);               
                 setPatient(patient);
             }else{
                 console.error(error);

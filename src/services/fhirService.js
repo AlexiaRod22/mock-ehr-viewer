@@ -51,6 +51,14 @@ async function getMappedObservations(patientId){
     return data.entry.map((entry) => mapObservation(entry.resource));
 }
 
+async function getImagingStudiesById(patientId){
+    const response = await fetch(`${FHIR_BASE_URL}/ImagingStudy?subject=Patient/${patientId}`);
+    
+    const data = await response.json();
+
+    return data
+}
+
 async function getImagingStudies(){
     const response = await fetch(`${FHIR_BASE_URL}/ImagingStudy?_count=5`);
     
@@ -77,4 +85,4 @@ async function getMappedImagingStudies(){
     return data.entry.map((entry) => mapImagingStudies(entry.resource));
 }
 
-export {getObservationsById,getMappedImagingStudies, mapImagingStudies,getImagingStudies,getPatientByIdentifier, mapPatient, mapObservation, getMappedObservations};
+export {getImagingStudiesById,getObservationsById,getMappedImagingStudies, mapImagingStudies,getImagingStudies,getPatientByIdentifier, mapPatient, mapObservation, getMappedObservations};

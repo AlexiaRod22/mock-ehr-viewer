@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import {getOlisResults} from '../services/olisService';
+import {formatDate} from '../utils/dateUtils';
 
 function OlisTile({patient}){
     const [labResults, setLabResults] = useState([]);
@@ -23,7 +24,7 @@ function OlisTile({patient}){
                     {' '}
                     {result.unit}
                     {' '}
-                    ({result.date})
+                    ({formatDate(result.date)})
                 </p>
             ))}
         </div>

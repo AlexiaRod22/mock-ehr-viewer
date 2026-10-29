@@ -27,5 +27,6 @@ body{
   border: 1px solid white;
   padding: 15px;
   width: 250px;
+  min-height: 350px;
   border-radius:8px;
 }

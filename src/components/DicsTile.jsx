@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react';
 import {getDicsStudies} from '../services/dicsService';
+import {formatDate} from '../utils/dateUtils';
 
 function DicsTile({patient}){
     const [studies,setStudies] = useState([]);
@@ -23,7 +24,7 @@ function DicsTile({patient}){
                     {' - '}
                     {study.imageTitle}
                     {' '} 
-                    ({study.studyDate})
+                    ({formatDate(study.studyDate)})
                 </p>
             ))}
         </div>

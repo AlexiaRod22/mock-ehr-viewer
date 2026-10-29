@@ -1,3 +1,5 @@
+import {formatDate} from '../utils/dateUtils';
+
 function PcrTile({patient}){
     return(
         <div className = "tile">
@@ -5,7 +7,7 @@ function PcrTile({patient}){
 
             <p>Name:  {patient.name}</p>
             <p>HCN: {patient.fhirId}</p>
-            <p>DOB: {patient.dob}</p>
+            <p>DOB: {formatDate(patient.dob)}</p>
             <p>Gender: {patient.gender}</p>
 
         </div>
