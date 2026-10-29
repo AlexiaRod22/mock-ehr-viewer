@@ -4,7 +4,7 @@ import PatientCard from './PatientCard';
 import Dashboard from './Dashboard';
 import {getPatientByHcn} from '../services/patientService';
 
-import {getFirstMappedPatient, getPatientByIdentifier, mapPatient} from '../services/fhirService';
+import {mapObservation,getObservations,getPatientByIdentifier, mapPatient} from '../services/fhirService';
 
 function EhrApp({oktaAuth}){
     const {authState} = useOktaAuth();
@@ -19,6 +19,15 @@ function EhrApp({oktaAuth}){
     
 
     //once hcn is inputted and the retrieve patient is clicked then run
+    async function testObservations(){
+        const data = await getObservations();
+
+        const observation = data.entry[0].resource;
+
+        console.log(mapObservation(observation));
+    }
+
+
     async function retrievePatient(){
         setLoading(true);
         setPatient(null);
@@ -83,6 +92,12 @@ function EhrApp({oktaAuth}){
                 onClick = {retrievePatient}
                 disabled = {loading}>
                     Retrieve Patient
+                </button>
+
+                <button
+                onClick = {testObservations}
+                disabled = {loading}>
+                    test
                 </button>
             </div>
 
