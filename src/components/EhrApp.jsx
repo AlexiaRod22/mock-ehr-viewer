@@ -4,7 +4,7 @@ import PatientCard from './PatientCard';
 import Dashboard from './Dashboard';
 import {getPatientByHcn} from '../services/patientService';
 
-import {getPatients} from '../services/fhirService';
+import {getPatients, mapPatient} from '../services/fhirService';
 
 function EhrApp({oktaAuth}){
     const {authState} = useOktaAuth();
@@ -17,9 +17,13 @@ function EhrApp({oktaAuth}){
 
 
     async function testFhir(){
-        const patients = await getPatients();
+        const data = await getPatients();
 
-        console.log(patients);
+        const firstPatient = data.entry[0].resource;
+
+        const mappedPatient = mapPatient(firstPatient);
+
+        console.log(mappedPatient);
     }
 
     //once hcn is inputted and the retrieve patient is clicked then run
