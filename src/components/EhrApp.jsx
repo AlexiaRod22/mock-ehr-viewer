@@ -4,7 +4,7 @@ import PatientCard from './PatientCard';
 import Dashboard from './Dashboard';
 import {getPatientByHcn} from '../services/patientService';
 
-import {getPatients, mapPatient} from '../services/fhirService';
+import {getFirstMappedPatient} from '../services/fhirService';
 
 function EhrApp({oktaAuth}){
     const {authState} = useOktaAuth();
@@ -16,35 +16,22 @@ function EhrApp({oktaAuth}){
     const [loading, setLoading] = useState(false);
 
 
-    async function testFhir(){
-        const data = await getPatients();
-
-        const firstPatient = data.entry[0].resource;
-
-        const mappedPatient = mapPatient(firstPatient);
-
-        console.log(mappedPatient);
-    }
+    
 
     //once hcn is inputted and the retrieve patient is clicked then run
-    function retrievePatient(){
+    async function retrievePatient(){
         setLoading(true);
         setPatient(null);
         setError('');
-
-
-        setTimeout(()=>{
-        const foundPatient = getPatientByHcn(healthCardNumber);
-
-        if(foundPatient){
-            setPatient(foundPatient);
-        }else{
-            setPatient(null);
-            setError('Patient not found');
+        try{
+            const patient = await getFirstMappedPatient();
+            setPatient(patient);
+        }
+        catch(error){
+            setError('FHIR patient retrieved failed');
         }
 
         setLoading(false);
-        }, 1000);
     }
 
     async function logout(){
@@ -68,16 +55,13 @@ function EhrApp({oktaAuth}){
                 Email: {userClaims?.email}
             </p>
 
-            <button
-                onClick = {testFhir}>
-                    Test FHIR
-            </button>
-
             <br/>
             <button 
             onClick = {logout}>
                 Sign out
             </button>
+            
+            <br/>
 
             <div className = "search-section">
                 <input

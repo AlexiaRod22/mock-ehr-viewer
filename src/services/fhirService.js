@@ -22,4 +22,12 @@ function mapPatient(patientResource){
 
 }
 
-export {getPatients, mapPatient};
+async function getFirstMappedPatient(){
+        const data = await getPatients();
+
+        const firstPatient = data.entry[0].resource;
+
+        return mapPatient(firstPatient);
+    }
+
+export {getPatients, mapPatient, getFirstMappedPatient};
