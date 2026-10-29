@@ -2,7 +2,7 @@ import PcrTile from './PcrTile';
 import OlisTile from './OlisTile';
 import DicsTile from './DicsTile';
 
-function Dashboard({patient,user}){
+function Dashboard({patient}){
     return(
         <>
         <h2 className = "dashboardTitle">Dashboard</h2>
@@ -11,13 +11,10 @@ function Dashboard({patient,user}){
 
             <PcrTile patient = {patient} />
 
-            {user.role === 'Clinician' &&(
-                <OlisTile patient = {patient}/>
-            )}
-                
-            {user.role === 'Clinician' &&(
-                <DicsTile patient = {patient}/>
-            )}
+            <OlisTile patient = {patient}/>
+            
+            <DicsTile patient = {patient}/>
+            
         </div>
         </>
     );
