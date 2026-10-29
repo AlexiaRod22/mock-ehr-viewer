@@ -45,4 +45,10 @@ function mapObservation(observationResource){
     };
 }
 
-export {getPatientByIdentifier, mapPatient, getObservations, mapObservation};
+async function getMappedObservation(){
+    const data = await getObservations();
+
+    return data.entry.map((entry) => mapObservation(entry.resource));
+}
+
+export {getPatientByIdentifier, mapPatient, getObservations, mapObservation, getMappedObservation};

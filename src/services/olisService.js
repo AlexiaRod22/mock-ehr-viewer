@@ -1,7 +1,7 @@
-import olisData from '../mockData/olisData';
+import {getMappedObservation} from './fhirService';
 
-function getOlisResults(hcn){
-    return olisData[hcn] || [];
+async function getOlisResults(){
+    return await getMappedObservation();
 }
 
 export {getOlisResults};

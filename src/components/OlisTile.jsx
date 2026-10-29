@@ -1,13 +1,29 @@
+import {useState, useEffect} from 'react';
 import {getOlisResults} from '../services/olisService';
+
 function OlisTile({patient}){
-    const labResults = getOlisResults(patient.hcn);
+    const [labResults, setLabResults] = useState([]);
+
+    useEffect(() => {
+        async function loadResults(){
+            const results = await getOlisResults();
+            setLabResults(results);
+        }
+
+        loadResults();
+    }, [])
+
     return(
         <div className="tile">
             <h3>OLIS</h3>
 
             {labResults.map((result,index) => (
                 <p key = {index}>
-                    {result.test}: {result.value}
+                    {result.testName}: {result.value}
+                    {' '}
+                    {result.unit}
+                    {' '}
+                    ({result.date})
                 </p>
             ))}
         </div>
