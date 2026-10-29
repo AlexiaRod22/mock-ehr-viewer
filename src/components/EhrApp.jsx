@@ -4,7 +4,7 @@ import PatientCard from './PatientCard';
 import Dashboard from './Dashboard';
 import {getPatientByHcn} from '../services/patientService';
 
-import {getFirstMappedPatient} from '../services/fhirService';
+import {getFirstMappedPatient, getPatientByIdentifier, mapPatient} from '../services/fhirService';
 
 function EhrApp({oktaAuth}){
     const {authState} = useOktaAuth();
@@ -24,8 +24,16 @@ function EhrApp({oktaAuth}){
         setPatient(null);
         setError('');
         try{
-            const patient = await getFirstMappedPatient();
-            setPatient(patient);
+            const data = await getPatientByIdentifier(healthCardNumber);
+            
+            console.log(data);
+
+            if(data.entry && data.entry.length > 0 ){
+                const patient = mapPatient(data.entry[0].resource);
+                setPatient(patient);
+            }else{
+                setError('No patient found');
+            }
         }
         catch(error){
             setError('FHIR patient retrieved failed');

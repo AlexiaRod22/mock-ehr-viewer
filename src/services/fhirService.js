@@ -8,6 +8,15 @@ async function getPatients(){
     return data;
 }
 
+async function getPatientByIdentifier(identifier){
+    const response = await fetch(`${FHIR_BASE_URL}/Patient?identifier=${identifier}`);
+
+    const data = await response.json();
+
+    return data;
+
+}
+
 function mapPatient(patientResource){
     return{
         name: `${patientResource.name?.[0]?.given?.[0] || ''} ` + 
@@ -23,11 +32,12 @@ function mapPatient(patientResource){
 }
 
 async function getFirstMappedPatient(){
-        const data = await getPatients();
+    const data = await getPatients();
 
-        const firstPatient = data.entry[0].resource;
+    const firstPatient = data.entry[0].resource;
 
-        return mapPatient(firstPatient);
-    }
+    return mapPatient(firstPatient);
+}
 
-export {getPatients, mapPatient, getFirstMappedPatient};
+
+export {getPatients, getPatientByIdentifier, mapPatient, getFirstMappedPatient};
