@@ -1,7 +1,7 @@
-import {getMappedObservation} from './fhirService';
+import {getMappedObservations} from './fhirService';
 
-async function getOlisResults(){
-    return await getMappedObservation();
+async function getOlisResults(patientId){
+    return await getMappedObservations(patientId);
 }
 
 export {getOlisResults};

@@ -4,7 +4,7 @@ function PatientCard({patient}) {
             <h2>Patient Information</h2>
 
             <p>Name:  {patient.name}</p>
-            <p>HCN: {patient.hcn}</p>
+            <p>HCN: {patient.fhirId}</p>
             <p>DOB: {patient.dob}</p>
             <p>Gender: {patient.gender}</p>
         </div>

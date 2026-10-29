@@ -24,14 +24,14 @@ function mapPatient(patientResource){
 
 }
 
-
-async function getObservations(){
-    const response =await fetch(`${FHIR_BASE_URL}/Observation?_count=5`);
+async function getObservationsById(patientId){
+    const response =await fetch(`${FHIR_BASE_URL}/Observation?subject=Patient/${patientId}`);
 
     const data = await response.json();
 
     return data;
 }
+
 
 function mapObservation(observationResource){
     return{
@@ -45,8 +45,8 @@ function mapObservation(observationResource){
     };
 }
 
-async function getMappedObservation(){
-    const data = await getObservations();
+async function getMappedObservations(patientId){
+    const data = await getObservationsById(patientId);
 
     return data.entry.map((entry) => mapObservation(entry.resource));
 }
@@ -77,4 +77,4 @@ async function getMappedImagingStudies(){
     return data.entry.map((entry) => mapImagingStudies(entry.resource));
 }
 
-export {getMappedImagingStudies, mapImagingStudies,getImagingStudies,getPatientByIdentifier, mapPatient, getObservations, mapObservation, getMappedObservation};
+export {getObservationsById,getMappedImagingStudies, mapImagingStudies,getImagingStudies,getPatientByIdentifier, mapPatient, mapObservation, getMappedObservations};

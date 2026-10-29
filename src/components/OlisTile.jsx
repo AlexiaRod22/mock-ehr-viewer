@@ -6,7 +6,7 @@ function OlisTile({patient}){
 
     useEffect(() => {
         async function loadResults(){
-            const results = await getOlisResults();
+            const results = await getOlisResults(patient.fhirId);
             setLabResults(results);
         }
 
