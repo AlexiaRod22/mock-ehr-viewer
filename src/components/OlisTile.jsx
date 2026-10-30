@@ -18,14 +18,33 @@ function OlisTile({patient}){
         <div className="tile">
             <h3>OLIS</h3>
 
+            <p>
+                {labResults.length}{' '} Results
+            </p>
+
+            <p className = "source-label">
+                Source: FHIR Observations
+            </p>
+
             {labResults.map((result,index) => (
-                <p key = {index}>
-                    {result.testName}: {result.value}
-                    {' '}
-                    {result.unit}
-                    {' '}
-                    ({formatDate(result.date)})
-                </p>
+                <div
+                    className="result-card"
+                    key={index}
+                >
+                    <strong>
+                        {result.testName}
+                    </strong>
+
+                    <p>
+                        {result.value}
+                        {' '}
+                        {result.unit}
+                    </p>
+
+                    <small>
+                        {formatDate(result.date)}
+                    </small>
+                </div>
             ))}
         </div>
     );

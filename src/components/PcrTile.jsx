@@ -5,8 +5,11 @@ function PcrTile({patient}){
         <div className = "tile">
             <h3>PCR</h3>
 
+            <p className = "source-label">
+                Source: FHIR Patient
+            </p>
             <p>Name:  {patient.name}</p>
-            <p>HCN: {patient.fhirId}</p>
+            <p>FHIR ID: {patient.fhirId}</p>
             <p>DOB: {formatDate(patient.dob)}</p>
             <p>Gender: {patient.gender}</p>
 

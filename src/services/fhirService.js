@@ -59,14 +59,6 @@ async function getImagingStudiesById(patientId){
     return data
 }
 
-async function getImagingStudies(){
-    const response = await fetch(`${FHIR_BASE_URL}/ImagingStudy?_count=5`);
-    
-    const data = await response.json();
-
-    return data
-}
-
 function mapImagingStudies(imagingStudyResource){
     return{
         studyId: imagingStudyResource.id,
@@ -79,10 +71,10 @@ function mapImagingStudies(imagingStudyResource){
     };
 }
 
-async function getMappedImagingStudies(){
-    const data = await getImagingStudies();
+async function getMappedImagingStudies(patientId){
+    const data = await getImagingStudiesById(patientId);
 
     return data.entry.map((entry) => mapImagingStudies(entry.resource));
 }
 
-export {getImagingStudiesById,getObservationsById,getMappedImagingStudies, mapImagingStudies,getImagingStudies,getPatientByIdentifier, mapPatient, mapObservation, getMappedObservations};
+export {getImagingStudiesById,getObservationsById,getMappedImagingStudies,getPatientByIdentifier, mapPatient, getMappedObservations};

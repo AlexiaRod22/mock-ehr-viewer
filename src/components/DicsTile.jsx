@@ -7,7 +7,7 @@ function DicsTile({patient}){
 
     useEffect(() => {
         async function loadStudies(){
-            const results = await getDicsStudies();
+            const results = await getDicsStudies(patient.fhirId);
 
             setStudies(results);
         }
@@ -18,14 +18,34 @@ function DicsTile({patient}){
         <div className="tile">
             <h3>DICS</h3>
 
+            <p>
+                {studies.length}{' '} Results
+            </p>
+            
+            <p className = "source-label">
+                Source: FHIR Imaging Study
+            </p>
+
+
             {studies.map((study,index) => (
-                <p key = {index}>
-                    {study.modality}
-                    {' - '}
-                    {study.imageTitle}
-                    {' '} 
-                    ({formatDate(study.studyDate)})
-                </p>
+                <div
+                    className="result-card"
+                    key={index}
+                >
+                    <strong>
+                        {study.imageTitle}
+                    </strong>
+
+                    <p>
+                        Modality:
+                        {' '}
+                        {study.modality}
+                    </p>
+
+                    <small>
+                        {formatDate(study.studyDate)}
+                    </small>
+                </div>
             ))}
         </div>
 

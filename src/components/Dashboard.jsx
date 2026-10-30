@@ -5,15 +5,21 @@ import DicsTile from './DicsTile';
 function Dashboard({patient}){
     return(
         <>
-        <h2 className = "dashboardTitle">Dashboard</h2>
+        <h2 className = "dashboard-title">Dashboard</h2>
 
         <div className="dashboard">
 
-            <PcrTile patient = {patient} />
+            <div className="dashboard-pcr">
+                <PcrTile patient={patient} />
+            </div>
 
-            <OlisTile patient = {patient}/>
-            
-            <DicsTile patient = {patient}/>
+            <div className="dashboard-olis">
+                <OlisTile patient={patient}/>
+            </div>
+
+            <div className="dashboard-dics">
+                <DicsTile patient={patient}/>
+            </div>
             
         </div>
         </>

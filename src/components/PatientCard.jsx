@@ -4,11 +4,27 @@ function PatientCard({patient}) {
         <div className = "patient-card">
             <h2>Current Patient</h2>
 
-            <p>Name:  {patient.name}</p>
-            <p>FHIR ID: {patient.fhirId}</p>
-            <p>HCN: </p>
-            <p>DOB: {formatDate(patient.dob)}</p>
-            <p>Gender: {patient.gender}</p>
+            <div className="patient-details">
+                <div>
+                    <strong>Name</strong>
+                    <p>{patient.name}</p>
+                </div>
+
+                <div>
+                    <strong>FHIR ID</strong>
+                    <p>{patient.fhirId}</p>
+                </div>
+
+                <div>
+                    <strong>Date of Birth</strong>
+                    <p>{formatDate(patient.dob)}</p>
+                </div>
+
+                <div>
+                    <strong>Gender</strong>
+                    <p>{patient.gender}</p>
+                </div>
+            </div>
         </div>
     );
 }

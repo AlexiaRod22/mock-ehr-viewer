@@ -24,9 +24,7 @@ function EhrApp({oktaAuth}){
             const data = await getPatientByIdentifier(healthCardNumber);
 
             if(data.entry && data.entry.length > 0 ){
-                const patient = mapPatient(data.entry[0].resource);
-                const images = await getImagingStudiesById(patient.fhirId);
-                console.log(images);               
+                const patient = mapPatient(data.entry[0].resource);              
                 setPatient(patient);
             }else{
                 console.error(error);
@@ -50,25 +48,43 @@ function EhrApp({oktaAuth}){
 
 
     return(
-        <div>
-            <h1>Ontario Health EHR Viewer</h1>
+        <div className= "ehr-container">
+            <div className="app-header">
+                <div className="header-left">
 
-            <p>
-                Signed in as: {' '}{userClaims?.name || userClaims?.email || 'Unknown User'}
-            </p>
+                    <div className="app-brand">
+                        Ontario Health
+                    </div>
+
+                    <div className="app-title">
+                        EHR Viewer
+                    </div>
+
+                </div>
+
+                <div className="header-right">
+
+                    <details className="user-menu">
+
+                        <summary>
+                            👤 {userClaims?.name}
+                        </summary>
+
+                        <div className="user-dropdown">
+                            <button
+                                onClick={logout}
+                            >
+                                Sign out
+                            </button>
+                        </div>
+                    </details>
+                </div>
+            </div>
             
-            <p>
-                Email: {userClaims?.email}
-            </p>
-
-            <br/>
-            <button 
-            onClick = {logout}>
-                Sign out
-            </button>
             
             <br/>
 
+            <h2>Patient Search</h2>
             <div className = "search-section">
                 <input
                 type = "text"
