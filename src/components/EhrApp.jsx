@@ -1,5 +1,14 @@
 import {useState} from 'react';
 import {useOktaAuth} from '@okta/okta-react';
+import Header from './Header';
+import Sidebar from './Sidebar';
+
+import PcrPage from './PcrPage';
+import OlisPage from './OlisPage';
+import DicsPage from './DicsPage';
+import MessagesPage from './MessagesPage';
+import HelpPage from './HelpPage';
+
 import PatientCard from './PatientCard';
 import Dashboard from './Dashboard';
 
@@ -13,6 +22,10 @@ function EhrApp({oktaAuth}){
     const [patient, setPatient] = useState(null);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState('dashboard');
+
+    const showPatientSearch = 
+        currentPage === 'dashboard' || currentPage === 'pcr' || currentPage ==='olis' || currentPage === 'dics';
 
 
 
@@ -49,74 +62,81 @@ function EhrApp({oktaAuth}){
 
     return(
         <div className= "ehr-container">
-            <div className="app-header">
-                <div className="header-left">
-
-                    <div className="app-brand">
-                        Ontario Health
-                    </div>
-
-                    <div className="app-title">
-                        EHR Viewer
-                    </div>
-
-                </div>
-
-                <div className="header-right">
-
-                    <details className="user-menu">
-
-                        <summary>
-                            👤 {userClaims?.name}
-                        </summary>
-
-                        <div className="user-dropdown">
-                            <button
-                                onClick={logout}
-                            >
-                                Sign out
-                            </button>
-                        </div>
-                    </details>
-                </div>
-            </div>
-            
-            
-            <br/>
-
-            <h2>Patient Search</h2>
-            <div className = "search-section">
-                <input
-                type = "text"
-                placeholder = "Enter Health Card Number"
-                value = {healthCardNumber}
-                onChange = {(event) => setHealthCardNumber(event.target.value)}
+            <Header 
+            userName = {userClaims?.name} 
+            logout = {logout}
+            />
+            <div className="app-layout">
+                <Sidebar
+                currentPage = {currentPage}
+                setCurrentPage = {setCurrentPage}
                 />
 
-                <button
-                onClick = {retrievePatient}
-                disabled = {loading}>
-                    Retrieve Patient
-                </button>
+                <div className = "content-area">
+                    {showPatientSearch &&(
+                        <>
+                        <h2>Patient Search</h2>
+                        <div className = "search-section">
+                            <input
+                            type = "text"
+                            placeholder = "Enter Health Card Number"
+                            value = {healthCardNumber}
+                            onChange = {(event) => setHealthCardNumber(event.target.value)}
+                            />
+
+                            <button
+                            onClick = {retrievePatient}
+                            disabled = {loading}>
+                                Retrieve Patient
+                            </button>
+
+                        </div>
+
+
+                        {loading &&(
+                            <p>Loading patient information...</p>
+                        )}
+                        
+                        {error && (
+                            <p>{error}</p>
+                        )}
+
+                        </>
+                    )}
+                    
+
+                    {patient && currentPage ==='dashboard' && (
+                        <>
+                        <PatientCard patient = {patient}/>
+                        <Dashboard 
+                        patient = {patient}/>
+                        </>   
+                    )}
+
+                    {patient && currentPage ==='pcr' && (
+                        <PcrPage patient={patient}/>
+                    )}
+
+                    {patient && currentPage ==='olis' && (
+                        <OlisPage patient={patient}/>
+                    )}
+
+                    {patient && currentPage ==='dics' && (
+                        <DicsPage patient={patient}/>
+                    )}
+
+                    {currentPage ==='messages' && (
+                        <MessagesPage />
+                    )}
+
+                    {currentPage ==='help' && (
+                        <HelpPage />
+                    )}
+                </div>
+                
 
             </div>
-
-
-            {loading &&(
-                <p>Loading patient information...</p>
-            )}
             
-            {error && (
-                <p>{error}</p>
-            )}
-
-            {patient && (
-                <>
-                <PatientCard patient = {patient}/>
-                <Dashboard 
-                patient = {patient}/>
-                </>   
-            )}
 
         </div>
     );
