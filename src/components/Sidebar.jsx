@@ -7,7 +7,8 @@ function Sidebar({currentPage, setCurrentPage}){
                     className= 'nav-link'
                     onClick={(event) => {event.preventDefault(); setCurrentPage('dashboard');}}
                 >
-                    🏠 Dashboard
+                    <i className="fa-light fa-house-chimney"></i>
+                    Dashboard
                 </a>
             </li>
 
@@ -17,7 +18,8 @@ function Sidebar({currentPage, setCurrentPage}){
                     className='nav-link'
                     onClick={(event) => {event.preventDefault(); setCurrentPage('pcr');}}
                 >
-                    🧬 PCR
+                    <i className="fa-light fa-clipboard-user"></i>
+                    PCR
                 </a>
             </li>
 
@@ -27,7 +29,8 @@ function Sidebar({currentPage, setCurrentPage}){
                     className='nav-link'
                     onClick={(event) => {event.preventDefault(); setCurrentPage('olis');}}
                 >
-                    🧪 OLIS
+                    <i className="fa-light fa-flask-vial"></i>
+                    OLIS
                 </a>
             </li>
 
@@ -37,7 +40,8 @@ function Sidebar({currentPage, setCurrentPage}){
                     className='nav-link'
                     onClick={(event) => {event.preventDefault(); setCurrentPage('dics');}}
                 >
-                    🖼 DICS
+                    <i className="fa-regular fa-display-medical"></i>
+                    DICS
                 </a>
             </li>
 
@@ -47,7 +51,8 @@ function Sidebar({currentPage, setCurrentPage}){
                     className='nav-link'
                     onClick={(event) => {event.preventDefault(); setCurrentPage('messages');}}
                 >
-                    🔔 Messages
+                    <i className="fa-light fa-envelope"></i>
+                    Messages
                 </a>
             </li>
 
@@ -57,7 +62,8 @@ function Sidebar({currentPage, setCurrentPage}){
                     className='nav-link'
                     onClick={(event) => {event.preventDefault(); setCurrentPage('help');}}
                 >
-                    ❓ Help
+                    <i className="fa-light fa-circle-question"></i>
+                    Help
                 </a>
             </li>
         </ul>

@@ -131,16 +131,14 @@ body{
 
 .app-layout{
   display: flex;
-  gap: 2rem;
+  gap: 4rem;
 }
 
 .oh-sidebar {
-  margin-top: 10rem; /*2rem top of header + 2 rem for brand + 2rem for app title + 2rem margin-bottom from header + 2rem gap for app layout*/
-  margin-left: 4rem; /*same as body padding*/
+  position: static !important;
 }
 
 .content-area{
-  margin-left: calc(var(--sidebar-width) + 4rem); 
   flex: 1;
 }
 .search-section{
