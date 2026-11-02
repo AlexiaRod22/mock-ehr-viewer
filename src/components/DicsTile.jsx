@@ -22,7 +22,7 @@ function DicsTile({patient}){
                 {studies.length}{' '} Results
             </p>
             
-            <p className = "source-label">
+            <p>
                 Source: FHIR Imaging Study
             </p>
 

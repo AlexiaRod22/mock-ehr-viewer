@@ -22,7 +22,7 @@ function OlisTile({patient}){
                 {labResults.length}{' '} Results
             </p>
 
-            <p className = "source-label">
+            <p>
                 Source: FHIR Observations
             </p>
 
