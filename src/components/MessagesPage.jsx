@@ -1,27 +1,25 @@
-function MessagesPage(){
+function MessagesPage({notifications}){
 
     return(
-        <div>
+        <div className = "detail-page">
             <h2>
-                Messages
+                Notifications
             </h2>
 
-            <ul>
-                <li>
-                    New lab results available
-                    for Sylvia Fairbanks
-                </li>
 
-                <li>
-                    Review patient imaging
-                    studies
-                </li>
+            {notifications.map((notifications) =>(
+                <div 
+                className = "detail-card"
+                key = {notifications.id}>
+                    <h3>{notifications.title}</h3>
 
-                <li>
-                    Follow-up appointment
-                    recommendation created
-                </li>
-            </ul>
+                    <strong>Patient</strong>
+                    <p>{notifications.patient}</p>
+
+                    <strong>Date</strong>
+                    <p>{notifications.date}</p>
+                </div>
+            ))}
         </div>
     );
 }

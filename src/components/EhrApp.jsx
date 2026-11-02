@@ -28,9 +28,24 @@ function EhrApp({oktaAuth}){
         currentPage === 'dashboard' || currentPage === 'pcr' || currentPage ==='olis' || currentPage === 'dics';
 
     const notifications = [
-        'New lab results for patient 118185 available',
-        'Review imaging study for patient 12345',
-        'New patient 098765 added to server'
+        {
+            id: 1,
+            title: 'New lab results available',
+            patient: 'Emmett Delgado',
+            date: 'November 1, 2026'
+        },
+        {
+            id: 2,
+            title: 'Imaging study ready for review',
+            patient: 'Sylvia Fairbanks',
+            date: 'October 31, 2026'
+        },
+        {
+            id: 3,
+            title: 'New patient added',
+            patient: 'Amos Calderon',
+            date: 'October 30, 2026'
+        }
     ];
 
     async function retrievePatient(){
@@ -131,7 +146,7 @@ function EhrApp({oktaAuth}){
                     )}
 
                     {currentPage ==='messages' && (
-                        <MessagesPage />
+                        <MessagesPage notifications = {notifications} />
                     )}
 
                     {currentPage ==='help' && (
