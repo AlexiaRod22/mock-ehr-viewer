@@ -1,4 +1,4 @@
-function Sidebar({currentPage, setCurrentPage}){
+function Sidebar({currentPage, setCurrentPage, notifications}){
     return(
         <div className = "sidebar">
             <button 
@@ -28,7 +28,7 @@ function Sidebar({currentPage, setCurrentPage}){
             <button 
             className = {currentPage==='messages'? 'sidebar-item active':'sidebar-item'}
             onClick = {()=>setCurrentPage('messages')}>
-                🔔 Messages
+                🔔 Messages ({notifications.length})
             </button>
 
             <button 

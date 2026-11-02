@@ -27,7 +27,11 @@ function EhrApp({oktaAuth}){
     const showPatientSearch = 
         currentPage === 'dashboard' || currentPage === 'pcr' || currentPage ==='olis' || currentPage === 'dics';
 
-
+    const notifications = [
+        'New lab results for patient 118185 available',
+        'Review imaging study for patient 12345',
+        'New patient 098765 added to server'
+    ];
 
     async function retrievePatient(){
         setLoading(true);
@@ -70,6 +74,7 @@ function EhrApp({oktaAuth}){
                 <Sidebar
                 currentPage = {currentPage}
                 setCurrentPage = {setCurrentPage}
+                notifications = {notifications}
                 />
 
                 <div className = "content-area">

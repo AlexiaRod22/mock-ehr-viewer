@@ -11,9 +11,9 @@ body,
   --oh-primary: #1976D2;
   --oh-primary-light: #F2FBFF;
   --oh-blue-hover: #0f477e;
-  --panel-background: #ffffff;
+  --panel-background: #FFFFFF;
   --border-color: #D7DBEC;
-  --border-color-light: #F4F7Fc;
+  --border-color-light: #F4F7FC;
   --text-primary: #1A1A1A;
   --text-secondary: #4D4D4D;
   --text-tertiary: #CCCCCC;
@@ -178,7 +178,7 @@ input {
   border: 1px solid
     var(--border-color);
   border-radius: 4px;
-  background: var(--border-color-light);
+  background: var(--panel-background);
   font-size: 1rem;
   font-weight: 400;
   color: var(--text-primary);
@@ -284,4 +284,23 @@ button:hover {
   border-top: 1px solid var(--border-color);
   padding-top: 0.75rem;
   margin-top: 0.75rem;
+}
+
+
+.detail-page{
+  width:100%;
+}
+
+.detail-card{
+  background: var(--panel-background);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding:1.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.detail-grid{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 2rem;
 }
