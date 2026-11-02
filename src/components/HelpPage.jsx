@@ -1,35 +1,75 @@
+import {useState} from 'react';
+
 function HelpPage(){
+    const [openSection,setOpenSection] = useState('');
 
     return(
 
-        <div>
+        <div className = "details-page">
 
-            <h2>
-                Help
-            </h2>
+            <h2> Help </h2>
 
-            <p>
-                Search a patient using a
-                Health Card Number.
-            </p>
+            <div className = "help-section">
+                <button
+                className = "help-button"
+                onClick = {() => setOpenSection(openSection === 'search'?'':'search')}
+                >
+                    Patient Search
+                </button>
 
-            <p>
-                Use PCR to review
-                demographics.
-            </p>
+                {openSection === 'search' && (
+                    <div className="help-content">
+                        Search for a patient by using a Health Card Number identifier. Put that identifier in the search box and click 'Retrieve Patient' to get information on the patient.
+                    </div>
+                )}
+            </div>
 
-            <p>
-                Use OLIS to review
-                laboratory results.
-            </p>
+            <div className = "help-section">
+                <button
+                className = "help-button"
+                onClick = {() => setOpenSection(openSection === 'pcr'?'':'pcr')}
+                >
+                    PCR
+                </button>
 
-            <p>
-                Use DICS to view
-                imaging studies.
-            </p>
+                {openSection === 'pcr' && (
+                    <div className="help-content">
+                        PCR is the Patient Client Registry that contains patient demographic information
+                    </div>
+                )}
+            </div>
+                
+            <div className="help-section">
+                <button
+                    className="help-button"
+                    onClick={() =>setOpenSection( openSection === 'olis'? '': 'olis')}
+                >
+                    OLIS
+                </button>
 
+                {openSection === 'olis' && (
+                    <div className="help-content">
+                        OLIS contains laboratory and observation data.
+                    </div>
+                )}
+
+            </div>
+
+            <div className="help-section">
+                <button
+                    className="help-button"
+                    onClick={() => setOpenSection(openSection === 'dics'? '': 'dics')}
+                >
+                    DICS
+                </button>
+
+                {openSection === 'dics' && (
+                    <div className="help-content">
+                        DICS contains imaging study information.
+                    </div>
+                )}
+            </div>
         </div>
-
     );
 
 }

@@ -304,3 +304,23 @@ button:hover {
   grid-template-columns: repeat(2,1fr);
   gap: 2rem;
 }
+
+
+.help-section{
+  margin-bottom: 1rem;
+}
+
+.help-button{
+  width: 100%;
+  text-align: left;
+  background: var(--panel-background);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.help-content{
+  background: var(--panel-background);
+  border: 1 px solid var(--border-color);
+  border-top: none;
+  padding: 1rem;
+}
