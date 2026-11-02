@@ -1,7 +1,15 @@
 import {useState} from 'react';
 
 function HelpPage(){
-    const [openSection,setOpenSection] = useState('');
+    const [openSections,setOpenSections] = useState([]);
+
+    function toggleSection(section){
+        if(openSections.includes(section)){
+            setOpenSections(openSections.filter(item => item !==section));
+        }else{
+            setOpenSections([...openSections, section]);
+        }
+    }
 
     return(
 
@@ -11,13 +19,13 @@ function HelpPage(){
 
             <div className = "help-section">
                 <button
-                className = "help-button"
-                onClick = {() => setOpenSection(openSection === 'search'?'':'search')}
+                className = {openSections.includes('search')?"help-button active":"help-button"}
+                onClick = {() => toggleSection('search')}
                 >
                     Patient Search
                 </button>
 
-                {openSection === 'search' && (
+                {openSections.includes('search') && (
                     <div className="help-content">
                         Search for a patient by using a Health Card Number identifier. Put that identifier in the search box and click 'Retrieve Patient' to get information on the patient.
                     </div>
@@ -26,13 +34,13 @@ function HelpPage(){
 
             <div className = "help-section">
                 <button
-                className = "help-button"
-                onClick = {() => setOpenSection(openSection === 'pcr'?'':'pcr')}
+                className = {openSections.includes('pcr')?"help-button active":"help-button"}
+                onClick = {() => toggleSection('pcr')}
                 >
                     PCR
                 </button>
 
-                {openSection === 'pcr' && (
+                {openSections.includes('pcr') && (
                     <div className="help-content">
                         PCR is the Patient Client Registry that contains patient demographic information
                     </div>
@@ -41,13 +49,13 @@ function HelpPage(){
                 
             <div className="help-section">
                 <button
-                    className="help-button"
-                    onClick={() =>setOpenSection( openSection === 'olis'? '': 'olis')}
+                    className={openSections.includes('olis')?"help-button active":"help-button"}
+                    onClick={() => toggleSection('olis')}
                 >
                     OLIS
                 </button>
 
-                {openSection === 'olis' && (
+                {openSections.includes('olis') && (
                     <div className="help-content">
                         OLIS contains laboratory and observation data.
                     </div>
@@ -57,13 +65,13 @@ function HelpPage(){
 
             <div className="help-section">
                 <button
-                    className="help-button"
-                    onClick={() => setOpenSection(openSection === 'dics'? '': 'dics')}
+                    className= {openSections.includes('dics')?"help-button active":"help-button"}
+                    onClick={() => toggleSection('dics')}
                 >
                     DICS
                 </button>
 
-                {openSection === 'dics' && (
+                {openSections.includes('dics') && (
                     <div className="help-content">
                         DICS contains imaging study information.
                     </div>

@@ -141,7 +141,7 @@ body{
 
 .sidebar-item{
   width: 100%;
-  background: white;
+  background: var(--panel-background);
   color: var(--text-primary);
   border: none;
   border-left: 4px solid transparent;
@@ -312,9 +312,28 @@ button:hover {
 
 .help-button{
   width: 100%;
-  text-align: left;
   background: var(--panel-background);
   color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  text-align: left;
+  padding: 1rem;
+  transition: 0.2s;
+}
+
+.help-button:hover {
+  background: var(--oh-blue-hover);
+  color: var(--panel-background);
+}
+
+.help-button.active{
+  background: var(--oh-primary-light);
+  border-left: 4px solid var(--oh-primary);
+  color: var(--text-primary);
+}
+
+.help-button.active:hover{
+  background: var(--oh-blue-hover);
+  color: var(--panel-background);
   border: 1px solid var(--border-color);
 }
 
