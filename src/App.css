@@ -281,42 +281,16 @@ button:hover {
   gap: 2rem;
 }
 
-
-.help-section{
-  margin-bottom: 1rem;
+.accordion-button:not(.collapsed) {
+  background-color: var(--oh-primary-light) !important;
+  color: var(--text-primary) !important;
 }
 
-.help-button{
-  width: 100%;
-  background: var(--panel-background);
-  color: var(--text-primary);
-  border: 1px solid var(--border-color);
-  text-align: left;
-  padding: 1rem;
-  transition: 0.2s;
+.accordion-button:not(.collapsed):hover {
+  background-color: var(--oh-blue-hover) !important;
+  color: var(--panel-background) !important;
 }
 
-.help-button:hover {
-  background: var(--oh-blue-hover);
-  color: var(--panel-background);
+.accordion-button:focus {
+  box-shadow: none !important;
 }
-
-.help-button.active{
-  background: var(--oh-primary-light);
-  border-left: 4px solid var(--oh-primary);
-  color: var(--text-primary);
-}
-
-.help-button.active:hover{
-  background: var(--oh-blue-hover);
-  color: var(--panel-background);
-  border: 1px solid var(--border-color);
-}
-
-.help-content{
-  background: var(--panel-background);
-  border: 1 px solid var(--border-color);
-  border-top: none;
-  padding: 1rem;
-}
-
