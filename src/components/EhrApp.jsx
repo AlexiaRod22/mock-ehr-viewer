@@ -89,7 +89,6 @@ function EhrApp({oktaAuth}){
                 <Sidebar
                 currentPage = {currentPage}
                 setCurrentPage = {setCurrentPage}
-                notifications = {notifications}
                 />
 
                 <div className = "content-area">

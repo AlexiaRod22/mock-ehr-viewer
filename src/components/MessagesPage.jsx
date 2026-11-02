@@ -9,15 +9,23 @@ function MessagesPage({notifications}){
 
             {notifications.map((notifications) =>(
                 <div 
-                className = "detail-card"
-                key = {notifications.id}>
-                    <h3>{notifications.title}</h3>
+                className = "card mb-3"
+                key = {notifications.id}
+                >
+                    <div className = "card-body">
+                        <h5 className="card-title">{notifications.title}</h5>
 
-                    <strong>Patient</strong>
-                    <p>{notifications.patient}</p>
+                        <p className = "card-text">
+                            <strong>Patient:</strong>
+                            {' '}
+                            {notifications.patient}
+                        </p>
+                    </div>
 
-                    <strong>Date</strong>
-                    <p>{notifications.date}</p>
+                    <div className="card-footer text-body-secondary">
+                        {notifications.date}
+                    </div>
+                        
                 </div>
             ))}
         </div>

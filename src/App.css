@@ -21,6 +21,8 @@ body,
   --success: #118847;
   --warning: #EFB243;
   --danger: #CD0000;
+
+  --sidebar-width: 80px;
 }
 
 h1 {
@@ -68,7 +70,6 @@ body{
   background: white;
   border-bottom: 4px solid
     var(--oh-primary);
-  padding: 1rem 2rem;
   margin-bottom: 2rem;
 }
 
@@ -133,36 +134,13 @@ body{
   gap: 2rem;
 }
 
-.sidebar{
-  display: flex;
-  flex-direction: column;
-  width: 200px;
-}
-
-.sidebar-item{
-  width: 100%;
-  background: var(--panel-background);
-  color: var(--text-primary);
-  border: none;
-  border-left: 4px solid transparent;
-  text-align: left;
-  padding: 1rem;
-  transition: 0.2s
-}
-
-.sidebar-item:hover {
-  background: var(--oh-primary-light);
-  border-left: 4px solid var(--oh-blue-hover);
-  color: var(--text-primary);
-}
-
-.sidebar-item.active{
-  background: var(--oh-primary-light);
-  border-left: 4px solid var(--oh-primary);
-  color: var(--text-primary);
+.oh-sidebar {
+  margin-top: 10rem; /*2rem top of header + 2 rem for brand + 2rem for app title + 2rem margin-bottom from header + 2rem gap for app layout*/
+  margin-left: 4rem; /*same as body padding*/
 }
 
 .content-area{
+  margin-left: calc(var(--sidebar-width) + 4rem); 
   flex: 1;
 }
 .search-section{
@@ -343,3 +321,4 @@ button:hover {
   border-top: none;
   padding: 1rem;
 }
+
