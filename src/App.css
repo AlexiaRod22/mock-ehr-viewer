@@ -9,12 +9,14 @@ body,
   /* Ontario Health Inspired */
 
   --oh-primary: #1976D2;
-  --oh-blue-hover: #004a91;
-  --background-page: #F4F7FC;
+  --oh-primary-light: #F2FBFF;
+  --oh-blue-hover: #0f477e;
   --panel-background: #ffffff;
   --border-color: #D7DBEC;
+  --border-color-light: #F4F7Fc;
   --text-primary: #1A1A1A;
   --text-secondary: #4D4D4D;
+  --text-tertiary: #CCCCCC;
   --font-primary: Arial, sans-serif;
   --success: #118847;
   --warning: #EFB243;
@@ -35,7 +37,7 @@ h2 {
 body{
   font-family: var(--font-primary);
   background-color:
-    var(--background-page);
+    var(--panel-background);
   color:
     var(--text-primary);
   margin: 0;
@@ -134,16 +136,30 @@ body{
 .sidebar{
   display: flex;
   flex-direction: column;
-  gap:0.5rem;
   width: 200px;
 }
 
 .sidebar-item{
+  width: 100%;
   background: white;
   color: var(--text-primary);
-  border: 1px solid var(--border-color);
+  border: none;
+  border-left: 4px solid transparent;
   text-align: left;
   padding: 1rem;
+  transition: 0.2s
+}
+
+.sidebar-item:hover {
+  background: var(--oh-primary-light);
+  border-left: 4px solid var(--oh-blue-hover);
+  color: var(--text-primary);
+}
+
+.sidebar-item.active{
+  background: var(--oh-primary-light);
+  border-left: 4px solid var(--oh-primary);
+  color: var(--text-primary);
 }
 
 .content-area{
@@ -162,7 +178,7 @@ input {
   border: 1px solid
     var(--border-color);
   border-radius: 4px;
-  background: white;
+  background: var(--border-color-light);
   font-size: 1rem;
   font-weight: 400;
   color: var(--text-primary);

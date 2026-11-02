@@ -1,27 +1,39 @@
 function Sidebar({currentPage, setCurrentPage}){
     return(
         <div className = "sidebar">
-            <button onClick = {()=>setCurrentPage('dashboard')}>
+            <button 
+            className = {currentPage==='dashboard'? 'sidebar-item active':'sidebar-item'}
+            onClick = {()=>setCurrentPage('dashboard')}>
                 🏠 Dashboard
             </button>
 
-            <button onClick = {()=>setCurrentPage('pcr')}>
+            <button 
+            className = {currentPage==='pcr'? 'sidebar-item active':'sidebar-item'}
+            onClick = {()=>setCurrentPage('pcr')}>
                 🧬 PCR
             </button>
 
-            <button onClick = {()=>setCurrentPage('olis')}>
+            <button 
+            className = {currentPage==='olis'? 'sidebar-item active':'sidebar-item'}
+            onClick = {()=>setCurrentPage('olis')}>
                 🧪 OLIS
             </button>
 
-            <button onClick = {()=>setCurrentPage('dics')}>
+            <button 
+            className = {currentPage==='dics'? 'sidebar-item active':'sidebar-item'}
+            onClick = {()=>setCurrentPage('dics')}>
                 🖼 DICS
             </button>
 
-            <button onClick = {()=>setCurrentPage('messages')}>
+            <button 
+            className = {currentPage==='messages'? 'sidebar-item active':'sidebar-item'}
+            onClick = {()=>setCurrentPage('messages')}>
                 🔔 Messages
             </button>
 
-            <button onClick = {()=>setCurrentPage('help')}>
+            <button 
+            className = {currentPage==='help'? 'sidebar-item active':'sidebar-item'}
+            onClick = {()=>setCurrentPage('help')}>
                 ❓ Help
             </button>
         </div>
