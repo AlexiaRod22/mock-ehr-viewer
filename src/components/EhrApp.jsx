@@ -23,10 +23,8 @@ function EhrApp({oktaAuth}){
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState('dashboard');
-
-    const showPatientSearch = 
-        currentPage === 'dashboard' || currentPage === 'pcr' || currentPage ==='olis' || currentPage === 'dics';
-
+    const [hasUnreadNotifications, setHasUnreadNotifications] = useState(true);
+    
     const notifications = [
         {
             id: 1,
@@ -48,6 +46,14 @@ function EhrApp({oktaAuth}){
         }
     ];
 
+    const showPatientSearch = 
+        currentPage === 'dashboard' || currentPage === 'pcr' || currentPage ==='olis' || currentPage === 'dics';
+
+
+    function openMessages(){
+        setHasUnreadNotifications(false);
+        setCurrentPage('messages');
+    }
     async function retrievePatient(){
         setLoading(true);
         setPatient(null);
@@ -84,6 +90,9 @@ function EhrApp({oktaAuth}){
             <Header 
             userName = {userClaims?.name} 
             logout = {logout}
+            notifications = {notifications.length}
+            openMessages = {openMessages}
+            hasUnreadNotifications = {hasUnreadNotifications}
             />
             <div className="app-layout">
                 <Sidebar
