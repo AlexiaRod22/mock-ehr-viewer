@@ -60,37 +60,15 @@ body{
   box-sizing: border-box;
 }
 
-
-
-
-.app-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: white;
-  border-bottom: 4px solid
-    var(--oh-primary);
-  margin-bottom: 2rem;
-}
-
 .header-left {
   display: flex;
   flex-direction: column;
 }
 
-.app-brand {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
 .app-title {
   font-size: 2rem;
   color: var(--oh-primary);
-}
-
-.header-right {
-  display: flex;
-  align-items: center;
+  text-decoration: none;
 }
 
 .notification-link{
@@ -135,41 +113,22 @@ body{
   font-weight: 600;
 }
 
-
-
-.user-menu {
-  position: relative;
+.oh-header .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.25;
 }
 
-.user-menu summary {
-  list-style: none;
-  cursor: pointer;
-  padding: 0.75rem;
-}
-
-.user-dropdown {
-  position: absolute;
-  right: 25%;
-  min-width:100px;
-  background: white;
-  border: 1px solid
-    var(--border-color);
-  border-radius: 4px;
-  box-shadow:
-    0 2px 8px rgba(0,0,0,0.1);
-}
-
-.user-dropdown button {
-  width: 100%;
-  background: white;
-  color: var(--text-primary);
-  text-align: center;
-  border: none;
-  border-radius: 4px;
-  padding: 0.75rem 1rem;
+.oh-header .nav-link i{
   font-size: 1rem;
-  font-weight: 400;
-  cursor: pointer;
+  width:42px;
+  height: 42px;
+}
+
+.dropdown-item{
+  font-size: 0.75rem;
 }
 
 .app-layout{

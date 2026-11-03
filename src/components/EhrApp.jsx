@@ -94,6 +94,8 @@ function EhrApp({oktaAuth}){
             openMessages = {openMessages}
             hasUnreadNotifications = {hasUnreadNotifications}
             />
+
+            <br/>
             <div className="app-layout">
                 <Sidebar
                 currentPage = {currentPage}
