@@ -1,0 +1,15 @@
+services:
+
+  hapi-fhir:
+
+    image: hapiproject/hapi:latest
+
+    ports:
+      - "8080:8080"
+
+    volumes:
+      - hapi-data:/data/hapi
+
+volumes:
+
+  hapi-data:
