@@ -1,4 +1,4 @@
-const FHIR_BASE_URL = 'https://hapi.fhir.org/baseR4';
+const FHIR_BASE_URL = 'http://localhost:8080/fhir';
 
 
 async function getPatientByIdentifier(identifier){
@@ -62,10 +62,12 @@ async function getImagingStudiesById(patientId){
 function mapImagingStudies(imagingStudyResource){
     return{
         studyId: imagingStudyResource.id,
+
+        description: imagingStudyResource.description,
         
-        modality: imagingStudyResource.series?.[0]?.modality?.code,
+        modality: imagingStudyResource.series?.[0]?.modality?.display,
         
-        imageTitle: imagingStudyResource.series?.[0]?.instance?.[0]?.title,
+        seriesDescription: imagingStudyResource.series?.[0]?.description,
         
         studyDate: imagingStudyResource.started
     };

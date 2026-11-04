@@ -130,17 +130,17 @@ function EhrApp({oktaAuth}){
                         {error && (
                             <p>{error}</p>
                         )}
-
-                        </>
+                        
+                        {patient && (
+                            <PatientCard patient = {patient}/>
+                        )}
+                        </>                      
                     )}
                     
 
                     {patient && currentPage ==='dashboard' && (
-                        <>
-                        <PatientCard patient = {patient}/>
                         <Dashboard 
                         patient = {patient}/>
-                        </>   
                     )}
 
                     {patient && currentPage ==='pcr' && (

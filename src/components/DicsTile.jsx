@@ -33,8 +33,14 @@ function DicsTile({patient}){
                     key={index}
                 >
                     <strong>
-                        {study.imageTitle}
+                        {study.description}
                     </strong>
+
+                    <p>
+                        Description:
+                        {' '}
+                        {study.seriesDescription}
+                    </p>
 
                     <p>
                         Modality:
