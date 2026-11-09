@@ -1,4 +1,4 @@
-name: React Build Check
+name: Build Checks
 
 on:
   push:
@@ -11,7 +11,7 @@ on:
 
 jobs:
 
-  build:
+  react-build:
 
     runs-on: ubuntu-latest
 
@@ -28,5 +28,16 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Build Application
+      - name: Build React
         run: npm run build
+
+  docker-build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Repository
+        uses: actions/checkout@v4
+      
+      - name: Build Docker Image
+        run: docker build -t mock-ehr-viewer .
