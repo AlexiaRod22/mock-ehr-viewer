@@ -7,7 +7,6 @@ import {toRelativeUrl} from '@okta/okta-auth-js';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/oh-styles-2.3.0.css';
-import './index.css';
 import App from './App.jsx';
 
 import oktaAuth from './oktaAuth';
