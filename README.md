@@ -1,16 +1,103 @@
-# React + Vite
+# OH EHR Viewer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack healthcare application that simulates an Ontario Health style Electronic Health Record (EHR) viewer.
 
-Currently, two official plugins are available:
+The application allows authenticated users to:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Search patients
+- View laboratory results (OLIS)
+- View diagnostic imaging studies (DICS)
+- View pateint demographics (PCR)
+- Navigate a clinical dashboard
 
-## React Compiler
+The system is built using React, HAPI FHIR, PostgreSQL, Docker, and Docker Compose.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Architecture
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Detailed architecture documentation can be found in:
+
+- ARCHITECTURE.md
+
+---
+
+## Technologies
+
+Frontend
+
+- React
+- Vite
+- React Router
+- Bootstrap
+- Okta Authentication
+
+Backend
+
+- HAPI FHIR
+- FHIR R4
+- Spring Boot
+
+Database
+
+- PostgreSQL
+
+Infrastructure
+
+- Docker
+- Docker Compose
+- nginx
+
+---
+
+## Application Architecture
+
+Browser
+↓
+React UI
+↓
+HAPI FHIR API
+↓
+PostgreSQL
+↓
+Docker Volume
+
+---
+
+## Local Development
+
+Frontend Development Server
+
+```bash
+npm install
+npm run dev
+
+```
+Frontend URL: http://localhost:5173
+
+
+Full Application Startup
+
+From the OH_EHR root folder:
+
+```bash
+docker compose up --build
+
+```
+Frontend: http://localhost:3000
+
+FHIR Metadata Endpoint: http://localhost:8080/fhir/metadata
+ 
+Project Structure
+
+OH_EHR
+│
+├── docker-compose.yml
+│
+├── mock-ehr-viewer
+│ ├── src
+│ ├── Dockerfile
+│ ├── nginx.conf
+│ └── package.json
+│
+└── hapi-fhir-jpaserver-starter
