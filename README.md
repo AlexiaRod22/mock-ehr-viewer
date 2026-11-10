@@ -52,20 +52,13 @@ Infrastructure
 
 ## Application Architecture
 
-Browser
-↓
-React UI
-↓
-HAPI FHIR API
-↓
-PostgreSQL
-↓
-Docker Volume
+Browser --> React UI --> HAPI FHIR API --> PostgreSQL --> Docker Volume
 
 ---
 
-## Local Development
+## Development Startup
 
+### Local Development
 Frontend Development Server
 
 ```bash
@@ -76,7 +69,8 @@ npm run dev
 Frontend URL: http://localhost:5173
 
 
-Full Application Startup
+```md
+### Full Application Startup
 
 From the OH_EHR root folder:
 
@@ -88,6 +82,7 @@ Frontend: http://localhost:3000
 
 FHIR Metadata Endpoint: http://localhost:8080/fhir/metadata
  
+
 Project Structure
 
 OH_EHR
