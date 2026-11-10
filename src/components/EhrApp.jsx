@@ -12,7 +12,7 @@ import HelpPage from './HelpPage';
 import PatientCard from './PatientCard';
 import Dashboard from './Dashboard';
 
-import {getImagingStudiesById,getPatientByIdentifier, mapPatient} from '../services/fhirService';
+import {getPatientByIdentifier, mapPatient} from '../services/fhirService';
 
 function EhrApp({oktaAuth}){
     const {authState} = useOktaAuth();
@@ -65,11 +65,10 @@ function EhrApp({oktaAuth}){
                 const patient = mapPatient(data.entry[0].resource);              
                 setPatient(patient);
             }else{
-                console.error(error);
                 setError('No patient found');
             }
         }
-        catch(error){
+        catch{
             setError('FHIR patient retrieved failed');
         }
 

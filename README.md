@@ -64,12 +64,10 @@ Frontend Development Server
 ```bash
 npm install
 npm run dev
-
 ```
 Frontend URL: http://localhost:5173
 
 
-```md
 ### Full Application Startup
 
 From the OH_EHR root folder:
@@ -81,13 +79,12 @@ docker compose up --build
 Frontend: http://localhost:3000
 
 FHIR Metadata Endpoint: http://localhost:8080/fhir/metadata
- 
 
 Project Structure
-
+```text
 OH_EHR
-│
-├── docker-compose.yml
+|
+│─ docker-compose.yml
 │
 ├── mock-ehr-viewer
 │ ├── src
@@ -96,3 +93,4 @@ OH_EHR
 │ └── package.json
 │
 └── hapi-fhir-jpaserver-starter
+```

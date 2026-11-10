@@ -11,9 +11,31 @@ on:
 
 jobs:
 
+  lint:
+
+    runs-on: ubuntu-latest
+
+    steps: 
+
+      - name: Download Repository
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with: 
+          node-version: 22
+
+      - name: Install Dependencies
+        run: npm install
+      
+      - name: Run ESLint
+        run: npm run lint
+
   react-build:
 
     runs-on: ubuntu-latest
+
+    needs: lint
 
     steps:
 
@@ -34,6 +56,8 @@ jobs:
   docker-build:
 
     runs-on: ubuntu-latest
+
+    needs: react-build
 
     steps:
       - name: Download Repository
