@@ -1,12 +1,18 @@
 # OH EHR Viewer
 
-A full-stack healthcare application that simulates an Ontario Health style Electronic Health Record (EHR) viewer using FHIR standards, modern web technologies, containerized infrastructure, and automated CI pipelines.
+A full-stack healthcare application that simulates an Ontario Health style Electronic Health Record (EHR) viewer using FHIR standards, modern web technologies, containerized infrastructure, persistent PostgreSQL storage, and automated CI pipelines.
+
+Note: No real patient information is included in this repository.
 
 
 ## Table of Contents
 
 - [Features](#-features)
 - [Architecture](#-architecture)
+- [Backend Dependency](#-backend-dependency)
+- [Project Context](#-project-context)
+- [Authentication](#-authentication)
+- [Sample Data](#-sample-data)
 - [Tech Stack](#-tech-stack)
 - [Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
@@ -85,7 +91,61 @@ PostgreSQL
 Docker Volume
 ```
 
+## Backend Dependency
 
+This project integrates with the HAPI FHIR JPA Starter project as the backend FHIR server implementation.
+
+The HAPI FHIR backend is maintained separately and must be cloned alongside this repository:
+
+```bash
+git clone https://github.com/hapifhir/hapi-fhir-jpaserver-starter.git
+```
+
+Expected directory structure:
+
+```text
+OH_EHR
+├── mock-ehr-viewer (this repo)
+└── hapi-fhir-jpaserver-starter (backend dependency)
+```
+
+The provided Docker Compose configuration will:
+
+- Build the React frontend
+- Build the HAPI FHIR backend
+- Start PostgreSQL
+- Configure persistent storage using Docker volumes
+
+## Project Context
+
+This project was developed as a proof-of-concept during a co-op placement at Ontario Health.
+
+The objective of the project was to explore healthcare interoperability, FHIR-based data exchange, containerized application deployment, persistent data storage, CI/CD automation, and cloud deployment concepts.
+
+This repository represents a development snapshot of the application prior to enterprise deployment and cloud/operational integration activities.
+
+Permission was granted to publicly maintain and display this repository for educational, portfolio, and professional development purposes.
+
+## Authentication
+
+Authentication is implemented using Okta and was configured using a personal Okta developer tenant during development.
+
+Developers wishing to run the application with authentication enabled will need to configure their own Okta developer tenant and update the application configuration accordingly.
+
+## Sample Data
+
+This project does not contain real patient information.
+
+Patient resources, laboratory results, diagnostic imaging studies, and demographic records are intended to be loaded through the HAPI FHIR server using standard FHIR resources and APIs.
+
+For demonstration purposes, users may populate the backend with sample FHIR resources such as:
+
+- Patient
+- Observation
+- DiagnosticReport
+- ImagingStudy
+
+The application was designed to demonstrate retrieval and visualization of healthcare data rather than provide a production-ready patient management platform.
 
 ## Tech Stack
 
@@ -168,7 +228,15 @@ http://localhost:5173
 
 ### Full Application Startup
 
-The complete application stack is started from the OH_EHR root directory.
+Ensure both repositories are present:
+
+```text
+OH_EHR
+├── mock-ehr-viewer (this repo)
+└── hapi-fhir-jpaserver-starter (backend dependency)
+```
+
+From the `mock-ehr-viewer` root folder:
 
 ```bash
 docker compose up --build
@@ -308,12 +376,11 @@ build output as a downloadable GitHub Actions artifact.
 ```text
 OH_EHR
 │
-├── docker-compose.yml
-│
 ├── mock-ehr-viewer
 |   ├── .github
 │   ├── src
 │   ├── Dockerfile
+│   ├── docker-compose.yml
 │   ├── nginx.conf
 │   └── package.json
 │

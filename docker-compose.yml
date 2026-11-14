@@ -23,7 +23,7 @@ services:
   hapi:
 
     build:
-      context: ./hapi-fhir-jpaserver-starter
+      context: ../hapi-fhir-jpaserver-starter
 
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/hapi
