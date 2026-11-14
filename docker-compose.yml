@@ -1,0 +1,44 @@
+services:
+
+  frontend:
+
+    build:
+      context: .
+
+    ports:
+      - "3000:80"
+
+  postgres:
+
+    image: postgres:16-alpine
+
+    environment:
+      POSTGRES_DB: hapi
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  hapi:
+
+    build:
+      context: ./hapi-fhir-jpaserver-starter
+
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/hapi
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: admin
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.postgresql.Driver
+      HIBERNATE_DIALECT: ca.uhn.fhir.jpa.model.dialect.HapiFhirPostgresDialect
+
+    ports:
+      - "8080:8080"
+
+    depends_on:
+      postgres:
+        condition: service_started
+
+volumes:
+
+  postgres-data:
