@@ -79,7 +79,7 @@ Browser
 nginx
    │
    ▼
-React UI
+React Application
    │
    ▼
 HAPI FHIR Server
